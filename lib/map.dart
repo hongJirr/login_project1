@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -38,7 +39,16 @@ class _MapViewState extends State<MapView> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("map"),
+        backgroundColor: Colors.blue[900],
       ),
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              UserAccountsDrawerHeader(accountName: Text("dd"), accountEmail: Text("ss"))
+            ],
+          ),
+        ),
         body: Column(children: [
           getPage()
         ]),
@@ -98,9 +108,7 @@ class _KakaomapState extends State<Kakaomap> {
         showMapTypeControl: true,
         showZoomControl: true,
         onClick: (message) async {
-
-          ScaffoldMessenger.of(context)
-              .showSnackBar(SnackBar(content: Text(message.message)));
+          showToast(message.message);
         },
         onTapMarker: (message) async {
           ScaffoldMessenger.of(context)
@@ -109,4 +117,13 @@ class _KakaomapState extends State<Kakaomap> {
           //await _openKakaoMapScreen(context);
         });
   }
+}
+
+void showToast(String message){
+  Fluttertoast.showToast(
+    msg: message,
+    backgroundColor: Colors.grey[900],
+    toastLength: Toast.LENGTH_SHORT,
+    gravity: ToastGravity.BOTTOM
+  );
 }
