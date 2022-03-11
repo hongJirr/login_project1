@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:login_project1/screens/main_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -44,7 +47,7 @@ class _LoginState extends State<Login> {
         centerTitle: true,
         leading: IconButton(
           onPressed: () {
-            print("menu");
+            print("menu2");
           },
           icon: Icon(Icons.menu),
         ),
@@ -57,35 +60,4 @@ class _LoginState extends State<Login> {
       body: const LoginSignupScreen(),
     );
   }
-}
-
-
-void showSnackBar(BuildContext context){
-
-  Scaffold.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("로그인 정보를 확인하세요", textAlign: TextAlign.center, ),
-        duration: Duration(seconds: 2),
-        backgroundColor: Colors.blue,
-      ));
-}
-
-void showSnackBar2 (BuildContext context){
-
-  Scaffold.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("비밀번호가 일치하지 않습니다", textAlign: TextAlign.center, ),
-        duration: Duration(seconds: 2),
-        backgroundColor: Colors.blue,
-      ));
-}
-
-void showSnackBar3 (BuildContext context){
-
-  Scaffold.of(context).showSnackBar(
-      const SnackBar(
-        content: Text("아이디를 확인해주세요", textAlign: TextAlign.center, ),
-        duration: Duration(seconds: 2),
-        backgroundColor: Colors.blue,
-      ));
 }
