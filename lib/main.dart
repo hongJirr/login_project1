@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:login_project1/screens/chat_screen.dart';
 import 'package:login_project1/screens/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -57,7 +59,16 @@ class _LoginState extends State<Login> {
           }, icon: Icon(Icons.search))
         ],
       ),
-      body: const LoginSignupScreen(),
+      body: StreamBuilder(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot){
+          if(snapshot.hasData){
+            return const ChatScreen();
+          }else{
+            return const LoginSignupScreen();
+          }
+        },
+      ),
     );
   }
 }

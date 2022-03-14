@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "993865770341",
+    "project_id": "kongji-chat",
+    "storage_bucket": "kongji-chat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:993865770341:android:73b8c439dd467a7ac42d8c",
+        "android_client_info": {
+          "package_name": "com.example.login_project1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "993865770341-bohrcqbs0o457p17mj94tl7tts24ej5q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKg2E8bvyhVwvHPQKsHd0Ql2aovXGPJv4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "993865770341-bohrcqbs0o457p17mj94tl7tts24ej5q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

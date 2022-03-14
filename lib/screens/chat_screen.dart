@@ -2,6 +2,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:login_project1/chat/newMessage.dart';
+
+import '../chat/message.dart';
 
 class ChatScreen extends StatefulWidget {
   const ChatScreen({Key? key}) : super(key: key);
@@ -44,29 +47,18 @@ class _ChatScreenState extends State<ChatScreen> {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: const Text("success logout"), backgroundColor: Colors.black.withOpacity(0.7), )
             );
-            Navigator.pop(context);
           }, icon: Icon(Icons.exit_to_app))
         ],
       ),
-      body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection("chats/0FWhZID6F6XTUxXeIySU/message").snapshots(),
-        builder: (BuildContext context, AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
-          if(snapshot.connectionState == ConnectionState.waiting){
-            return Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-          final docs = snapshot.data!.docs;
-          return ListView.builder(
-            itemCount: docs.length,
-            itemBuilder: (context, idx){
-              return Container(
-                padding: EdgeInsets.all(8.0),
-                child: Text(docs[idx]['text']),
-              );
-            },
-          );
-        },
+      body: Container(
+        child: Column(
+            children: [
+              Expanded(
+                child: Messages(),
+              ),
+              NewMessages(),
+            ]
+        ),
       )
     );
   }
